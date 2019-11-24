@@ -19,3 +19,4 @@ permalink: /
 * Decrypt and encrypt text (access token: 233): 
     <p class="encrypted" id="QuC6SpQrHSQi56O7V0NGTgGJu5fqoMiGVWaQjbWEQb">Flag</p>
 * LaTeX formula Support with MathJax
+* [Crypto Utility]()
