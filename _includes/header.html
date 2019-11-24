@@ -165,7 +165,7 @@
         for (acc = 0; acc < elem_clct.length; acc++) {
             var encrypted = elem_clct[acc].id;
             var ct = JSON.stringify({
-                iv: this.id.substring(22) + "==",
+                iv: encrypted.substring(22) + "==",
                 v: 1,
                 iter: 10000,
                 ks: 128,
@@ -174,7 +174,7 @@
                 adata: "",
                 cipher: "aes",
                 salt: "",
-                ct: this.id.substring(22)
+                ct: encrypted.substring(22)
             });
             try {
                 var txt = sjcl.json.decrypt(pwd, ct);
