@@ -32,10 +32,12 @@
   <link rel="stylesheet" href="{{site.url}}{{site.baseurl}}{{site.assets_path}}/css/rouge-bg.css" />
   <!-- mathjax 2.7.5 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <!-- Decrypt -->
   {% if page.encrypted_text == true %}
   <script>
-    window.load = function() {
+    $(document).ready(function() {
       var elements = document.getElementsByClassName("encrypted");
       Array.from(elements).forEach(function (element) {
         element.addEventListener("click", function () {
@@ -61,7 +63,7 @@
           }
         });
       });
-    };
+    });
   </script>
   {% endif %}
 </head>
