@@ -14,8 +14,8 @@ email: "bindon@hanmir.com"
 github: "bindon"
 # path to: css/, fonts/, img/ and js/
 assets_path: "/assets" # i.e. "/assets" 
-statement: "Designed by DeerRIDER, All Rights Reserved"
+statement: "bindon (Designed by DeerRIDER). All rights reserved."
 # default max toc levels: 1 - 6 (h1 - h6)
-toc_level: 6
+toc_level: 1
 # texts randomly displayed in background
 bgtext: "αβγδεζηθικλμνξοπρστυφχψω∷∫∮∝∞∧∨∑∏∪∩∈∵∴⊥‖∠⌒⊙≌√"
