@@ -35,7 +35,7 @@
   {% if page.encrypted_text == true %}
   <!-- Decrypt contents -->
   <script>
-    $(document).ready(function() {
+    window.onload = function() {
       var elements = document.getElementsByClassName("encrypted");
       Array.from(elements).forEach(function (element) {
         element.addEventListener("click", function () {
@@ -61,7 +61,7 @@
           }
         });
       });
-    });
+    };
   </script>
   {% endif %}
 </head>
