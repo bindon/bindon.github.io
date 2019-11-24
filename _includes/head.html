@@ -39,18 +39,18 @@
     Array.from(elements).forEach(function (element) {
       element.addEventListener("click", function () {
         var password = prompt("Input password for " + this.innerText);
-        var ciphertext = '{'
-        '"iv"    : "' + this.id.substring(22) + '==",' +
-          '"v"     : 1,' +
-          '"iter"  : 10000,' +
-          '"ks"    : "128",' +
-          '"ts"    : "64",' +
-          '"mode"  : "ccm",' +
-          '"adata" : "",' +
-          '"cipher": "aes",' +
-          '"salt"  : "",' +
-          '"ct"    : "' + this.id.substring(22) + '"'
-        '}';
+        var ciphertext = JSON.stringify({
+          iv: this.id.substring(22) + "==",
+          v: 1,
+          iter: 10000,
+          ks: 128,
+          ts: 64,
+          mode: "ccm",
+          adata: "",
+          cipher: "aes",
+          salt: "",
+          ct: this.id.substring(22)
+        });
 
         try {
           this.innerHTML = sjcl.json.decrypt(password, ciphertext);
