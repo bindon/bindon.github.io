@@ -16,6 +16,5 @@ permalink: /
 ##  Features
 * Highly customizable, content-oriented with The Matrix style
 * Eyesight-protection layout
-* Decrypt and encrypt text (access token: 233): 
+* Decrypt and encrypt text (access token: 32768): 
     <p class="encrypted" id="QuC6SpQrHSQi56O7V0NGTgGJu5fqoMiGVWaQjbWEQb">Flag</p>
-* LaTeX formula Support with MathJax
