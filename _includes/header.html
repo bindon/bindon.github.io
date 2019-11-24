@@ -163,10 +163,10 @@
             var ciphertext = '{'
             '"iv"    : "' + this.id.substring(22) + '==",' + 
                 '"v"     : 1,'     +
-                '"iter"  : 10000'  +
-                '"ks"    : "128"'  +
-                '"ts"    : "64"'   +
-                '"mode"  : "ccm"'  +
+                '"iter"  : 10000,' +
+                '"ks"    : "128",' +
+                '"ts"    : "64",'  +
+                '"mode"  : "ccm",' +
                 '"adata" : "",'    +
                 '"cipher": "aes",' +
                 '"salt"  : "",'    +
@@ -192,14 +192,14 @@
             var encrypted = elem_clct[acc].id;
             var ct = '{' +
                 '"iv"    : "' + encrypted.substring(0, 22) + '==",' + 
-                '"v"     : 1,' +
-                '"iter"  : 10000' +
-                '"ks"    : "128"' +
-                '"ts"    : "64"' +
-                '"mode"  : "ccm"' +
-                '"adata" : "",' +
+                '"v"     : 1,'     +
+                '"iter"  : 10000,' +
+                '"ks"    : "128",' +
+                '"ts"    : "64",'  +
+                '"mode"  : "ccm",' +
+                '"adata" : "",'    +
                 '"cipher": "aes",' +
-                '"salt"  : "",' +
+                '"salt"  : "",'    +
                 '"ct"    : "' + encrypted.substring(22) + '"'
             '}';
             try {
