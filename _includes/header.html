@@ -157,19 +157,19 @@
 <script src="{{ site.url }}{{ site.baseurl }}{{ site.assets_path }}/js/sjcl.js" async></script>
 <script>
     var elements = document.getElementsByClassName("encrypted");
-    elements.foreach(function(element) {
-        element.addEventListener("click", function() {
-            var password   = prompt("Input password for " + this.innerText);
+    Array.from(elements).forEach(function (element) {
+        element.addEventListener("click", function () {
+            var password = prompt("Input password for " + this.innerText);
             var ciphertext = '{'
-            '"iv"    : "' + this.id.substring(0, 22) + '==",'
-            '"v"     : 1,' +
-                '"iter"  : 10000' +
-                '"ks"    : "128"' +
-                '"ts"    : "64"' +
-                '"mode"  : "ccm"' +
-                '"adata" : "",' +
+            '"iv"    : "' + this.id.substring(22) + '==",' + 
+                '"v"     : 1,'     +
+                '"iter"  : 10000'  +
+                '"ks"    : "128"'  +
+                '"ts"    : "64"'   +
+                '"mode"  : "ccm"'  +
+                '"adata" : "",'    +
                 '"cipher": "aes",' +
-                '"salt"  : "",' +
+                '"salt"  : "",'    +
                 '"ct"    : "' + this.id.substring(22) + '"'
             '}';
 
@@ -190,9 +190,9 @@
         }
         for (acc = 0; acc < elem_clct.length; acc++) {
             var encrypted = elem_clct[acc].id;
-            var ct = '{'
-            '"iv"    : "' + encrypted.substring(0, 22) + '==",'
-            '"v"     : 1,' +
+            var ct = '{' +
+                '"iv"    : "' + encrypted.substring(0, 22) + '==",' + 
+                '"v"     : 1,' +
                 '"iter"  : 10000' +
                 '"ks"    : "128"' +
                 '"ts"    : "64"' +
