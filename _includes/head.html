@@ -32,4 +32,36 @@
   <link rel="stylesheet" href="{{site.url}}{{site.baseurl}}{{site.assets_path}}/css/rouge-bg.css" />
   <!-- mathjax 2.7.5 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  {% if page.encrypted_text == true %}
+  <!-- Decrypt contents -->
+  <script>
+    window.onload = function() {
+      var elements = document.getElementsByClassName("encrypted");
+      Array.from(elements).forEach(function (element) {
+        element.addEventListener("click", function () {
+          var password = prompt("Input password for " + this.innerText);
+          var ciphertext = JSON.stringify({
+            iv: this.id.substring(22) + "==",
+            v: 1,
+            iter: 10000,
+            ks: 128,
+            ts: 64,
+            mode: "ccm",
+            adata: "",
+            cipher: "aes",
+            salt: "",
+            ct: this.id.substring(22)
+          });
+
+          try {
+            this.innerHTML = sjcl.json.decrypt(password, ciphertext);
+          } catch (e) {
+            console.log(e);
+            alert("Invalid Password!");
+          }
+        });
+      });
+    };
+  </script>
+  {% endif %}
 </head>
