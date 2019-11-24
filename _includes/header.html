@@ -156,6 +156,32 @@
 {% if page.encrypted_text == true %}
 <script src="{{ site.url }}{{ site.baseurl }}{{ site.assets_path }}/js/sjcl.js" async></script>
 <script>
+    var elements = document.getElementsByClassName("encrypted");
+    elements.foreach(function(element) {
+        element.addEventListener("click", function() {
+            var password   = prompt("Input password for " + this.innerText);
+            var ciphertext = '{'
+            '"iv"    : "' + this.id.substring(0, 22) + '==",'
+            '"v"     : 1,' +
+                '"iter"  : 10000' +
+                '"ks"    : "128"' +
+                '"ts"    : "64"' +
+                '"mode"  : "ccm"' +
+                '"adata" : "",' +
+                '"cipher": "aes",' +
+                '"salt"  : "",' +
+                '"ct"    : "' + this.id.substring(22) + '"'
+            '}';
+
+            try {
+                this.innerHTML = sjcl.json.decrypt(password, ciphertext);
+            } catch (e) {
+                console.log(e);
+                alert("Invalid Password!");
+            }
+        });
+    });
+
     function decrypt_all(pwd, class_name) {
         var elem_clct = document.getElementsByClassName(class_name);
         if (elem_clct.length == 0) {
