@@ -41,7 +41,7 @@
       var elements = document.getElementsByClassName("encrypted");
       Array.from(elements).forEach(function (element) {
         element.addEventListener("click", function () {
-          var password = prompt("Input password for " + this.innerText);
+          var password = prompt("Input password");
           if(password == null || password.length == 0) {
             return false;
           }
