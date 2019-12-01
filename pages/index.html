@@ -1,0 +1,21 @@
+---
+layout: default
+post_list: "date"
+toc: true
+home_btn: true
+btn_text: true
+footer: true
+title: "bindon Personal Site"
+author: "bindon"
+encrypted_text: true
+permalink: /
+---
+
+<table>
+    {% for cate in site.categories %} 
+        <h1>{{ cate_name }}</h1>
+        {% for post in cate[1] %}
+            * <a href="{{site.url}}{{site.baseurl}}{{post.url}}">{{ post.title }}</a>
+        {% endfor %}
+    {% endfor %}
+</table>    
