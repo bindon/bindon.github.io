@@ -51,7 +51,7 @@
 {% capture cate_name %}
 {{ cate | first }}
 {% endcapture %}
-{% if cate_name == page.category %}
+    {% if cate_name == page.category %}
 <h1 class="loa">{{cate_name}} Post List</h1>
 <table>
     <thead>
@@ -69,4 +69,5 @@
         {% endfor %}
     </tbody>
 </table>
+    {% endif %}
 {% endif %}
