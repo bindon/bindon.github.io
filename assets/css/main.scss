@@ -358,19 +358,19 @@ body {
     color: $color-primary;
   }
   a:link {
-    font-style: underline;
+    text-decoration: underline;
   }
   a:hover {
     font-weight: bold;
   }
-  ul li a {
+  ul > li > a {
     color: $color-primary;
   }
-  ul li a:link {
+  ul > li > a:link {
     text-decoration: none;
   }
-  ul li a:hover {
-    font-style: underline;
+  ul > li > a:hover {
+    text-decoration: underline;
     font-weight: bold;
   }
   img {
