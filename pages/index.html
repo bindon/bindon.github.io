@@ -17,8 +17,10 @@ permalink: /
         {{ cate | first }}
         {% endcapture %}
             <h2>{{ cate_name }}</h2>
+        <ul>
         {% for post in cate[1] %}
-            <ul><a href="{{site.url}}{{site.baseurl}}{{post.url}}">{{ post.title }}</a></ul>
+            <li><a href="{{site.url}}{{site.baseurl}}{{post.url}}">{{ post.title }}</a></li>
         {% endfor %}
+        </ul>
     {% endfor %}
-</table>    
+</table>
