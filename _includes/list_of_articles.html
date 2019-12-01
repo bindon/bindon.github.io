@@ -1,4 +1,5 @@
-{% if page.post_list == "date" %}
+{% case page.post_list %}
+{% when "date" %}
 <!-- list of articles: sort by date (by default) -->
 <h1 class="loa">Post List</h1>
 <table>
@@ -19,7 +20,7 @@
         {% endfor %}
     </tbody>
 </table>
-{% elsif page.post_list == "category" %}
+{% when "category" %}
 <!-- list of articles: sorted by category -->
 <h1>Post List</h1>
 {% for cate in site.categories %}
@@ -45,4 +46,23 @@
     </tbody>
     {% endfor %}
 </table>
-{% endif %}
+{% when "current" %}
+<!-- list of articles: sorted by current -->
+<h1 class="loa">{{page.category}} Post List</h1>
+<table>
+    <thead>
+        <tr>
+            <th>TITLE</th>
+            <th>DATE</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for post in site.categories[page.category] %}
+        </tr>
+        <td class="td_title"><a href="{{site.url}}{{site.baseurl}}{{post.url}}">{{post.title}}</a></td>
+        <td class="td_date">{{post.date | date: "%Y-%m-%d"}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endcase %}
