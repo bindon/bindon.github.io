@@ -362,13 +362,13 @@ body {
   a:hover {
     font-weight: bold;
   }
-  ul > li > a {
+  div > ul > li > a {
     color: $color-primary;
   }
-  ul > li > a:link {
+  div > ul > li > a:link {
     text-decoration: none;
   }
-  ul > li > a:hover {
+  div > ul > li > a:hover {
     text-decoration: underline;
     font-weight: bold;
   }
