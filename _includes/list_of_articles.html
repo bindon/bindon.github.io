@@ -22,32 +22,32 @@
 {% elsif page.post_list == "category" %}
 <!-- list of articles: sorted by category -->
 <h1>Post List</h1>
-{% for cate in site.categories %} 
+{% for cate in site.categories %}
 {% capture cate_name %}
 {{ cate | first }}
 {% endcapture %}
 <table id="t_{{ cate_name | strip }}">
     <thead>
         <tr>
-        <th id="cate_name"><i class="fa fa-tags"></i>{{ cate_name }}</th>
-        <th></th>  
+            <th id="cate_name"><i class="fa fa-tags"></i>{{ cate_name }}</th>
+            <th></th>
         </tr>
     </thead>
-  <tbody>
-    {% for post in cate[1] %}
-    <tr>
-      <td class="td_title">
-        <a href="{{site.url}}{{site.baseurl}}{{post.url}}">{{ post.title }}</a>
-      </td>
-      <td class="td_date">{{ post.date | date: "%Y-%m-%d" }}</td>
-    </tr>
+    <tbody>
+        {% for post in cate[1] %}
+        <tr>
+            <td class="td_title">
+                <a href="{{site.url}}{{site.baseurl}}{{post.url}}">{{ post.title }}</a>
+            </td>
+            <td class="td_date">{{ post.date | date: "%Y-%m-%d" }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
     {% endfor %}
-  </tbody>
-{% endfor %}
 </table>
 {% elsif page.post_list == "current" %}
 <!-- list of articles: sorted by current -->
-{% for cate in site.categories %} 
+{% for cate in site.categories %}
 {% capture cate_name %}
 {{ cate | first }}
 {% endcapture %}
@@ -69,5 +69,4 @@
         {% endfor %}
     </tbody>
 </table>
-{% endif %}
 {% endif %}
