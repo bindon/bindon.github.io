@@ -361,7 +361,16 @@ body {
     font-style: underline;
   }
   a:hover {
-    text-decoration: underline;
+    font-weight: bold;
+  }
+  ul li a {
+    color: $color-primary;
+  }
+  ul li a:link {
+    text-decoration: none;
+  }
+  ul li a:hover {
+    font-style: underline;
     font-weight: bold;
   }
   img {
