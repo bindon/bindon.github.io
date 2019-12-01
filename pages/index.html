@@ -13,9 +13,12 @@ permalink: /
 
 <table>
     {% for cate in site.categories %} 
-        <h1>{{ cate_name }}</h1>
+        {% capture cate_name %}
+        {{ cate | first }}
+        {% endcapture %}
+            <h1>{{ cate_name }}</h1>
         {% for post in cate[1] %}
-            * <a href="{{site.url}}{{site.baseurl}}{{post.url}}">{{ post.title }}</a>
+            <li><a href="{{site.url}}{{site.baseurl}}{{post.url}}">{{ post.title }}</a></li>
         {% endfor %}
     {% endfor %}
 </table>    
