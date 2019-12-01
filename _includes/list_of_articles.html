@@ -22,7 +22,6 @@
 {% elsif page.post_list == "category" %}
 <!-- list of articles: sorted by category -->
 <h1>Post List</h1>
-<table>
 {% for cate in site.categories %} 
 {% capture cate_name %}
 {{ cate | first }}
@@ -46,4 +45,29 @@
   </tbody>
 {% endfor %}
 </table>
+{% elsif page.post_list == "current" %}
+<!-- list of articles: sorted by current -->
+{% for cate in site.categories %} 
+{% capture cate_name %}
+{{ cate | first }}
+{% endcapture %}
+{% if cate_name == page.category %}
+<h1 class="loa">{{cate_name}} Post List</h1>
+<table>
+    <thead>
+        <tr>
+            <th>TITLE</th>
+            <th>DATE</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for post in site.posts %}
+        </tr>
+        <td class="td_title"><a href="{{site.url}}{{site.baseurl}}{{post.url}}">{{post.title}}</a></td>
+        <td class="td_date">{{post.date | date: "%Y-%m-%d"}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
 {% endif %}
