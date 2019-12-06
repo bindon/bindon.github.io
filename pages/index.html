@@ -1,0 +1,26 @@
+---
+layout: default
+post_list: "date"
+toc: true
+home_btn: true
+btn_text: true
+footer: true
+title: "bindon Personal Site"
+author: "bindon"
+encrypted_text: true
+permalink: /
+---
+
+<div>
+{% for cate in site.categories %} 
+    {% capture cate_name %}
+    {{ cate | first }}
+    {% endcapture %}
+    <h2>{{ cate_name | strip }}</h2>
+    <ul>
+    {% for post in cate[1] %}
+        <li><a href="{{site.url}}{{site.baseurl}}{{post.url}}">{{ post.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% endfor %}
+</div>

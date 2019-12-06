@@ -1,7 +1,6 @@
 ---
 Jekyll Assets: start scss files with two lines of triple dashes
 ---
-
 @charset "utf-8";
 
 // global reset
@@ -216,7 +215,7 @@ $blk-timing-function: cubic-bezier(0.98, -0.23, 0.65, 0.7);
     .footer {
       height: auto;
       padding: 3% 0 1% 0;
-      margin: 10px 0 10px 0;
+      // margin: 10px 0 10px 0;
       position: relative;
       text-align: center;
       .nav_bar {
@@ -358,9 +357,19 @@ body {
     color: $color-primary;
   }
   a:link {
-    font-style: underline;
+    text-decoration: underline;
   }
   a:hover {
+    font-weight: bold;
+  }
+  div > ul > li > a {
+    color: $color-primary;
+  }
+  div > ul > li > a:link {
+    text-decoration: none;
+  }
+  div > ul > li > a:hover {
+    text-decoration: underline;
     font-weight: bold;
   }
   img {

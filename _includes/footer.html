@@ -2,11 +2,8 @@
     <nav class="nav_bar">
         <ul>
             <li class="copyright">
-                Copyright © 2019
-                {% if site.statement %}
-                    {{ site.statement }}
-                {% endif %}
+                Copyright © 2019 {% if site.statement %}{{ site.statement | strip }}{% endif %}
             </li>
+        </ul>
     </nav>
-    </ul>
 </div>
