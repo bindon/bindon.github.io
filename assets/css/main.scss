@@ -10,10 +10,11 @@ $color-bg: rgb(0, 0, 0);
 $color-postbg: rgb(0, 0, 0);
 $image-background: none;
 @font-face {
-  font-family: "Fira Code Online";
-  src: url("../fonts/FiraCode-Regular.woff");
+  font-family: "D2Coding";
+  src: url("../fonts/D2Coding-Ver1.3.2-20180524.ttf");
 }
-$font-family: 
+$font-family: "D2Coding";
+/*
 "Fira Code", 
 "Source Code Pro", 
 "Fira Code Online", 
@@ -27,6 +28,7 @@ Helvetica,
 Tahoma, 
 Arial,
 sans-serif;
+*/
 $font-size-h1: 23px;
 $font-size-h2: 23px;
 $font-size-h3: 21px;
