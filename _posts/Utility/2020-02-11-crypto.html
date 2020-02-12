@@ -1,0 +1,128 @@
+---
+layout: post
+title: Crypto Utilities
+author: bindon
+post_list: "current"
+category: Utility
+date: 2020-02-11
+toc: true
+home_btn: true
+btn_text: true
+footer: true
+maximize: true
+encrypted_text: true
+toc_level: 6
+excerpt: ""
+abstract: ""
+---
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sjcl/1.0.8/sjcl.min.js"
+        integrity="sha256-nIoG9XIePM1QNttI6KAGLYGNxc4DNinxxmOZW0/Z7uA=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
+
+<table>
+    <thead>
+    <tr>
+        <th>Hex</th>
+        <th>Operation</th>
+        <th>Base64</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><label for="hex"></label><textarea id="hex" rows="20" cols="50"></textarea></td>
+        <td>
+            <input type="button" id="hex_to_b64" value="---Hex to B64-->"/>
+            <br/><br/>
+            <input type="button" id="b64_to_hex" value="<--B64 to Hex---"/>
+            <br/><br/>
+            <label for="is_b64_url">URL-Safe</label><input type="checkbox" id="is_b64_url" checked="checked"/>
+
+        </td>
+        <td><label for="b64"></label><textarea id="b64" rows="20" cols="50"></textarea></td>
+    </tr>
+    </tbody>
+</table>
+
+<table>
+    <thead>
+    <tr>
+        <th>Algorithm</th>
+        <th>Plaintext</th>
+        <th>Operation</th>
+        <th>Ciphertext</th>
+        <th>Options</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>AES<br/>(Advanced Encryption Standard)</td>
+        <td><label for="aes_pt"></label><textarea id="aes_pt" rows="20" cols="50"></textarea></td>
+        <td>
+            <input type="button" id="aes_enc" value="---Encrypt-->"/>
+            <br/><br/>
+            <input type="button" id="aes_dec" value="<--Decrypt---"/>
+        </td>
+        <td><label for="aes_ct"></label><textarea id="aes_ct" rows="20" cols="50"></textarea></td>
+        <td>
+            <fieldset>
+                <legend>Key Size</legend>
+                <input type="radio" id="aes_size_256" name="aes_size" value="256" checked="checked"/>
+                <label for="aes_size_256">AES-256</label>
+                <input type="radio" id="aes_size_192" name="aes_size" value="192"/>
+                <label for="aes_size_192">AES-192</label>
+                <input type="radio" id="aes_size_128" name="aes_size" value="128"/>
+                <label for="aes_size_128">AES-128</label>
+            </fieldset>
+            <fieldset>
+                <legend>Mode of Operation</legend>
+                <input type="radio" id="aes_mode_gcm" name="aes_mode" value="gcm" checked="checked"/>
+                <label for="aes_mode_gcm">GCM</label>
+                <input type="radio" id="aes_mode_cbc" name="aes_mode" value="cbc"/>
+                <label for="aes_mode_cbc">CBC</label>
+                <input type="radio" id="aes_mode_ctr" name="aes_mode" value="ctr"/>
+                <label for="aes_mode_ctr">CTR</label>
+            </fieldset>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<script>
+    $.encode = function (fromCodec, fromValue, toCodec) {
+        let result = null;
+        try {
+            result = toCodec.fromBits(fromCodec.toBits(fromValue));
+        } catch (e) {
+            result = e.message;
+        }
+        return result;
+    };
+
+    $("#hex_to_b64").click(function () {
+        $("#b64").val(
+            $.encode(
+                sjcl.codec.hex,
+                $("#hex").val(),
+                $("#is_b64_url").is(":checked") ? sjcl.codec.base64url : sjcl.codec.base64
+            )
+        );
+    });
+
+    $("#b64_to_hex").click(function () {
+        $("#hex").val(
+            $.encode(
+                $("#is_b64_url").is(":checked") ? sjcl.codec.base64url : sjcl.codec.base64,
+                $("#b64").val(),
+                sjcl.codec.hex
+            )
+        );
+    });
+
+    $("#aes_enc").click(function () {
+        sjcl.encrypt()
+    });
+    $("#aes_dec").click(function () {
+
+    });
+</script>
