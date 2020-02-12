@@ -362,16 +362,17 @@ body {
   [type="checkbox"] + label {
       cursor: pointer;
       display: inline-block;
+      padding: 10px 10px;
       background-color: rgba(0, 0, 0, 0.7);
       border: 1px solid rgba(52, 165, 7, 0.9);
   }
   [type="radio"]:hover + label,
   [type="checkbox"]:hover + label {
-      border: 1px solid rgba(52, 165, 7, 0.7);
+      background-color: rgba(52, 165, 7, 0.7);
   }
   [type="radio"]:checked + label,
   [type="checkbox"]:checked + label {
-      border: 1px solid rgba(52, 165, 7, 0.5);
+      background-color: rgba(52, 165, 7, 0.5);
   }
 // links
   a {
