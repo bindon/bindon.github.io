@@ -360,6 +360,10 @@ body {
       position: fixed;
       width: 0;
   }
+  fieldset {
+      background-color: rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(52, 165, 7, 0.9);
+  }
   [type="radio"] + label,
   [type="checkbox"] + label {
       cursor: pointer;
