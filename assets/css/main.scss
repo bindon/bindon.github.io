@@ -364,7 +364,7 @@ body {
 
   [type="radio"]:checked + label,
   [type="checkbox"]:checked + label,
-  [type="radio"]:not(:checked) + label
+  [type="radio"]:not(:checked) + label, 
   [type="checkbox"]:not(:checked) + label
   {
       display: inline-block;
