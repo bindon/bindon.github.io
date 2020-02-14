@@ -17,10 +17,19 @@ abstract: ""
 ---
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sjcl/1.0.8/sjcl.min.js"
         integrity="sha256-nIoG9XIePM1QNttI6KAGLYGNxc4DNinxxmOZW0/Z7uA=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sjcl@1.0.8/core/cbc.js"
+        integrity="sha256-E11MzWpOp6WLxuDQdsLDSb2zXBXl23ZI3Wl8TA9ObRI=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sjcl@1.0.8/core/ctr.js"
+        integrity="sha256-nxRk+z5ybwFzgNkae88rUUxZHs2Wy8KoNTe8ns24mRM=" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
         crossorigin="anonymous"></script>
-
+<script type="text/javascript">
+    sjcl.bitArray._xor4 = function (x, y) {
+        return [x[0] ^ y[0], x[1] ^ y[1], x[2] ^ y[2], x[3] ^ y[3]];
+    }
+</script>
+<h1>Encode/Decode</h1>
 <table>
     <thead>
     <tr>
@@ -31,20 +40,42 @@ abstract: ""
     </thead>
     <tbody>
     <tr>
-        <td><label for="hex"></label><textarea id="hex" rows="20" cols="50"></textarea></td>
+        <td><label for="hex"></label><textarea id="hex" rows="10" cols="50"></textarea></td>
         <td>
             <button id="hex_to_b64">---Hex to B64--&gt;</button>
-            <br/><br/>
+            <br/>
             <button id="b64_to_hex">&lt;--B64 to Hex---</button>
-            <br/><br/>
+            <br/>
             <input type="checkbox" id="is_b64_url" checked="checked"/><label for="is_b64_url">URL</label>
 
         </td>
-        <td><label for="b64"></label><textarea id="b64" rows="20" cols="50"></textarea></td>
+        <td><label for="b64"></label><textarea id="b64" rows="10" cols="50"></textarea></td>
     </tr>
     </tbody>
 </table>
 
+<h1>Random Number Generation</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Size(bit)</th>
+        <th>Operation</th>
+        <th>Result</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><label for="rng_size"></label><input type="text" id="rng_size"/><br/><label id="rng_size_byte">0
+            byte</label></td>
+        <td>
+            <button id="rng_gen">---Generate--&gt;</button>
+        </td>
+        <td><label for="rng_result"></label><textarea id="rng_result" rows="10" cols="50"></textarea></td>
+    </tr>
+    </tbody>
+</table>
+
+<h1>Symmetric Encrypt/Decrypt</h1>
 <table>
     <thead>
     <tr>
@@ -57,38 +88,54 @@ abstract: ""
     </thead>
     <tbody>
     <tr>
-        <td>AES<br/>(Advanced Encryption Standard)</td>
-        <td><label for="aes_pt"></label><textarea id="aes_pt" rows="20" cols="50"></textarea></td>
         <td>
-            <button id="aes_enc">---Encrypt--&gt;</button>
-            <br/><br/>
-            <button id="aes_dec">&lt;--Decrypt---</button>
-        </td>
-        <td><label for="aes_ct"></label><textarea id="aes_ct" rows="20" cols="50"></textarea></td>
-        <td>
+            AES<br/>
+            (Advanced Encryption Standard)<br/>
             <fieldset>
                 <legend>Key Size</legend>
                 <input type="radio" id="aes_size_256" name="aes_size" value="256" checked="checked"/>
-                <label for="aes_size_256">AES-256</label><br />
+                <label for="aes_size_256">AES-256</label><br/>
                 <input type="radio" id="aes_size_192" name="aes_size" value="192"/>
-                <label for="aes_size_192">AES-192</label><br />
+                <label for="aes_size_192">AES-192</label><br/>
                 <input type="radio" id="aes_size_128" name="aes_size" value="128"/>
                 <label for="aes_size_128">AES-128</label>
             </fieldset>
             <fieldset>
                 <legend>Mode of Operation</legend>
                 <input type="radio" id="aes_mode_gcm" name="aes_mode" value="gcm" checked="checked"/>
-                <label for="aes_mode_gcm">GCM</label><br />
+                <label for="aes_mode_gcm">GCM</label><br/>
                 <input type="radio" id="aes_mode_cbc" name="aes_mode" value="cbc"/>
-                <label for="aes_mode_cbc">CBC</label><br />
+                <label for="aes_mode_cbc">CBC</label><br/>
                 <input type="radio" id="aes_mode_ctr" name="aes_mode" value="ctr"/>
                 <label for="aes_mode_ctr">CTR</label>
+            </fieldset>
+        </td>
+        <td><label for="aes_pt"></label><textarea id="aes_pt" rows="20" cols="50"></textarea></td>
+        <td>
+            <button id="aes_enc">---Encrypt--&gt;</button>
+            <br/>
+            <button id="aes_dec">&lt;--Decrypt---</button>
+        </td>
+        <td><label for="aes_ct"></label><textarea id="aes_ct" rows="20" cols="50"></textarea></td>
+        <td>
+            <fieldset>
+                <legend>IV</legend>
+                <label for="aes_iv"></label><textarea id="aes_iv" rows="10" cols="50"></textarea>
+            </fieldset>
+            <fieldset>
+                <legend>KEY</legend>
+                <label for="aes_key"></label><textarea id="aes_key" rows="10" cols="50"></textarea>
             </fieldset>
         </td>
     </tr>
     </tbody>
 </table>
 <script>
+    $(document).ready(function () {
+        sjcl.beware["CBC mode is dangerous because it doesn't protect message integrity."]();
+        sjcl.beware["CTR mode is dangerous because it doesn't protect message integrity."]();
+    });
+
     $.encode = function (fromCodec, fromValue, toCodec) {
         let result = null;
         try {
@@ -98,31 +145,79 @@ abstract: ""
         }
         return result;
     };
-
+    $.getBase64Codec = function () {
+        return $("#is_b64_url").is(":checked") ? sjcl.codec.base64url : sjcl.codec.base64;
+    };
+    $.getRandomHex = function (bitSize) {
+        let arrayBytes = new Uint32Array(bitSize >> 5);
+        window.crypto.getRandomValues(arrayBytes);
+        return sjcl.codec.hex.fromBits(arrayBytes);
+    };
     $("#hex_to_b64").click(function () {
         $("#b64").val(
             $.encode(
                 sjcl.codec.hex,
                 $("#hex").val(),
-                $("#is_b64_url").is(":checked") ? sjcl.codec.base64url : sjcl.codec.base64
+                $.getBase64Codec()
             )
         );
     });
-
     $("#b64_to_hex").click(function () {
         $("#hex").val(
             $.encode(
-                $("#is_b64_url").is(":checked") ? sjcl.codec.base64url : sjcl.codec.base64,
+                $.getBase64Codec(),
                 $("#b64").val(),
                 sjcl.codec.hex
             )
         );
     });
+    $("#rng_size").keyup(function () {
+        $("#rng_size_byte").text(($(this).val() / 8) + " bytes");
+    });
+    $("#rng_gen").click(function () {
+        $("#rng_result").text($.getRandomHex($("#rng_size").val()));
+    });
 
+    $.getAesCipherAndIv = function() {
+        const size = $('input[name=aes_size]:checked').val();
+
+        let key = $("#aes_key").val();
+        let iv = $("#aes_iv").val();
+        let ivLen = $("#aes_mode_gcm").is(":checked") ? 96 : 128;
+
+        if (!key || key.length !== size >> 2) {
+            $("#aes_key").val(key = $.getRandomHex(size));
+        }
+
+        if (!iv || iv.length !== ivLen >> 2) {
+            $("#aes_iv").val(iv = $.getRandomHex(ivLen));
+        }
+
+        const cipher = new sjcl.cipher.aes(sjcl.codec.hex.toBits(key));
+
+        return [cipher, iv];
+    };
     $("#aes_enc").click(function () {
-        sjcl.encrypt()
+        const [cipher, iv] = $.getAesCipherAndIv();
+        const mode = $("input[name=aes_mode]:checked").val();
+        const ciphertext = sjcl.mode[mode].encrypt(
+            cipher,
+            sjcl.codec.hex.toBits($("#aes_pt").val()),
+            sjcl.codec.hex.toBits(iv)
+        );
+
+        $("#aes_ct").val(sjcl.codec.hex.fromBits(ciphertext));
     });
     $("#aes_dec").click(function () {
+        const [cipher, iv] = $.getAesCipherAndIv();
+        const mode = $("input[name=aes_mode]:checked").val();
+        const ciphertext = sjcl.mode[mode].decrypt(
+            cipher,
+            sjcl.codec.hex.toBits($("#aes_ct").val()),
+            sjcl.codec.hex.toBits(iv)
+        );
+
+        $("#aes_pt").val(sjcl.codec.hex.fromBits(ciphertext));
 
     });
 </script>
