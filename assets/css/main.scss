@@ -341,6 +341,14 @@ body {
     font: inherit;
     vertical-align: baseline;
   }
+  input[type=text] {
+    margin: 0;
+    padding: 0;
+    border: 0.5px solid rgba($color-primary, 0.9);
+    background-color: rgba($color-postbg, 0.7);
+    color: $color-warning;
+    font-size: 15px;
+  }
   textarea {
     margin: 0;
     padding: 0;
