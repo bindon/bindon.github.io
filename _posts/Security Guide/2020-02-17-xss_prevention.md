@@ -73,7 +73,7 @@ StringEscapeUtils.escapeEcmaScript(value)
 
 # Examples
 
-1. &lt;img&gt; tag
+* &lt;img&gt; tag
 img 태그는 HTML 태그 중 하나로 XSS 공격에 자주 사용되기 때문에 JSTL의 escapeXml을 이용하여 태그를 사용할 수 없게 Escaping 해야 한다.
 
 아래 예제는 Server에서 Escaping을 수행했음에도 불구하고 Client에서 escapeXml을 수행하지 않아 스크립트가 실행된 것을 나타낸다.
@@ -81,7 +81,7 @@ img 태그는 HTML 태그 중 하나로 XSS 공격에 자주 사용되기 때문
 ![Image Tag]({{site.url}}{{site.baseurl}}{{site.assets_path}}/img/posts/Security Guide/2020-02-17-xss_prevention/examples_img_tag.png){:style="display: block; margin: 0 auto"}
 
 
-2. java\rscript
+* java\rscript
 해당 문법은 다양한 곳에 삽입될 수 있으며 *javascript:alert(1)*과 같이 작성하여 뒤에 나오는 문자열이 javascript 라는 것을 명시하고 실행시킨다.
 
 이 때 javascript 사이에 개행(carriage return, line feed), 공백과 같은 문자가 포함되어도 javascript로 인식하며 *javascript* 문자열을 Filtering 할 경우 우회가 가능하다.
