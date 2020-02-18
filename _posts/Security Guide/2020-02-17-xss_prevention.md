@@ -80,6 +80,7 @@ img 태그는 HTML 태그 중 하나로 XSS 공격에 자주 사용되기 때문
 
 ![Image Tag]({{site.url}}{{site.baseurl}}{{site.assets_path}}/img/posts/Security Guide/2020-02-17-xss_prevention/examples_img_tag.png){:style="display: block; margin: 0 auto"}
 
+
 2. java\rscript
 해당 문법은 다양한 곳에 삽입될 수 있으며 *javascript:alert(1)*과 같이 작성하여 뒤에 나오는 문자열이 javascript 라는 것을 명시하고 실행시킨다.
 
