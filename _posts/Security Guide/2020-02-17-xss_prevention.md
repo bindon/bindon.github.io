@@ -83,7 +83,7 @@ StringEscapeUtils.escapeEcmaScript(value)
 | &quot; | \&quot; | escapeEcmaScriptMap.put("\"", "\\\""); |
 | \\ | \\\\ | escapeEcmaScriptMap.put("\\", "\\\\"); |
 | / | \\/ | escapeEcmaScriptMap.put("/", "\\/"); |
-| \\b | \\\\b | private static final String[][] JAVA_CTRL_CHARS_ESCAPE = {{"\\b", "\\\\b"},{"\\n", "\\\\n"},{"\\t", "\\\\t"},{"\\f", "\\\\f"},{"\\r", "\\\\r"}}; |
+| \\b | \\\\b | private static final String[][] JAVA_CTRL_CHARS_ESCAPE = \{\{"\\b", "\\\\b"\},\{"\\n", "\\\\n"\},\{"\\t", "\\\\t"\},\{"\\f", "\\\\f"\},\{"\\r", "\\\\r"\}\}; |
 | \\n | \\\\n | ^ |
 | \\t | \\\\t | ^ |
 | \\f | \\\\f | ^ |
