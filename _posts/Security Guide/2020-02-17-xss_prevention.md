@@ -55,13 +55,14 @@ XSS를 방지하기 위한 JSTL 태그는 &lt;c:out&gt;이며 *escapeXml* Attrib
 &lt;c:out value="${escapedValue}" escapeXml="true" /&gt;
 ```
 
-| Before | After | Description |
-|:------:|:-----:|:------------|
-| &lt; | &amp;lt; | [escapeXML](https://tomcat.apache.org/taglibs/standard/apidocs/org/apache/taglibs/standard/util/EscapeXML.html) |
-| &gt; | &amp;gt; | ^ |
-| &amp; | &amp;amp; | ^ |
-| &apos; | &amp;apos; | ^ |
-| &quot; | &amp;quot; | ^ |
+| Before |   After    |
+|:------:|:----------:|
+| &lt;   | &amp;lt;   |
+| &gt;   | &amp;gt;   |
+| &amp;  | &amp;amp;  |
+| &apos; | &amp;apos; |
+| &quot; | &amp;quot; |
+
 
 ## Server
 
@@ -77,18 +78,18 @@ Server에서 작성할 내용은 *Apache Commons Text Library*에 존재하는 *
 StringEscapeUtils.escapeEcmaScript(value)
 ```
 
-| Before | After | Description |
-|:------:|:-----:|:------------|
-| &apos; | \&apos; | escapeEcmaScriptMap.put("'", "\\'"); |
-| &quot; | \&quot; | escapeEcmaScriptMap.put("\"", "\\\""); |
-| \\ | \\\\ | escapeEcmaScriptMap.put("\\", "\\\\"); |
-| / | \\/ | escapeEcmaScriptMap.put("/", "\\/"); |
-| \\b | \\\\b | private static final String[][] JAVA_CTRL_CHARS_ESCAPE = \{\{"\\b", "\\\\b"\},\{"\\n", "\\\\n"\},\{"\\t", "\\\\t"\},\{"\\f", "\\\\f"\},\{"\\r", "\\\\r"\}\}; |
-| \\n | \\\\n | ^ |
-| \\t | \\\\t | ^ |
-| \\f | \\\\f | ^ |
-| \\r | \\\\r | ^ |
-| > | Escape unicode | JavaUnicodeEscaper.outsideOf(32, 0x7f) |
+| Before |  After  |                                  Description                                  |
+|:------:|:-------:|:------------------------------------------------------------------------------|
+| &apos; | \&apos; | escapeEcmaScriptMap.put("'", "\\'");                                          |
+| &quot; | \&quot; | escapeEcmaScriptMap.put("\"", "\\\"");                                        |
+| \\     | \\\\    | escapeEcmaScriptMap.put("\\", "\\\\");                                        |
+| /      | \\/     | escapeEcmaScriptMap.put("/", "\\/");                                          |
+| \\b    | \\\\b   | private static final String[][] JAVA_CTRL_CHARS_ESCAPE = \{\{"\\b", "\\\\b"\},|
+| \\n    | \\\\n   | \{"\\n", "\\\\n"\},                                                           |
+| \\t    | \\\\t   | \{"\\t", "\\\\t"\},                                                           |
+| \\f    | \\\\f   | \{"\\f", "\\\\f"\},                                                           |
+| \\r    | \\\\r   | \{"\\r", "\\\\r"\}\};                                                         |
+| Escape | Unicode | JavaUnicodeEscaper.outsideOf(32, 0x7f)                                        |
 
 ***
 
@@ -132,3 +133,4 @@ img 태그는 HTML 태그 중 하나로 XSS 공격에 자주 사용되기 때문
 # References
 
 * [Types of XSS in OWASP](https://owasp.org/www-community/Types_of_Cross-Site_Scripting)
+* [escapeXML](https://tomcat.apache.org/taglibs/standard/apidocs/org/apache/taglibs/standard/util/EscapeXML.html)
