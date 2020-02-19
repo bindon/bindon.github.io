@@ -81,13 +81,13 @@ StringEscapeUtils.escapeEcmaScript(value)
 |:------:|:-----:|:------------|
 | &apos; | \&apos; | escapeEcmaScriptMap.put("'", "\\'"); |
 | &quot; | \&quot; | escapeEcmaScriptMap.put("\"", "\\\""); |
-| \ | \\ | escapeEcmaScriptMap.put("\\", "\\\\"); |
-| / | \/ | escapeEcmaScriptMap.put("/", "\\/"); |
-| \b | \\b | private static final String[][] JAVA_CTRL_CHARS_ESCAPE = {{"\b", "\\b"},{"\n", "\\n"},{"\t", "\\t"},{"\f", "\\f"},{"\r", "\\r"}}; |
-| \n | \\n | ^ |
-| \t | \\t | ^ |
-| \f | \\f | ^ |
-| \r | \\r | ^ |
+| \\ | \\\\ | escapeEcmaScriptMap.put("\\", "\\\\"); |
+| / | \\/ | escapeEcmaScriptMap.put("/", "\\/"); |
+| \\b | \\\\b | private static final String[][] JAVA_CTRL_CHARS_ESCAPE = {{"\\b", "\\\\b"},{"\\n", "\\\\n"},{"\\t", "\\\\t"},{"\\f", "\\\\f"},{"\\r", "\\\\r"}}; |
+| \\n | \\\\n | ^ |
+| \\t | \\\\t | ^ |
+| \\f | \\\\f | ^ |
+| \\r | \\\\r | ^ |
 | > | Escape unicode | JavaUnicodeEscaper.outsideOf(32, 0x7f) |
 
 ***
