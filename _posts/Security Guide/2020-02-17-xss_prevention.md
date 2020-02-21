@@ -52,7 +52,7 @@ Client에서 렌더링 되는 방어 기법의 경우 공격자의 입장에서 
 XSS를 방지하기 위한 JSTL 태그는 &lt;c:out&gt;이며 *escapeXml* Attribute를 활용한다.
 
 ```html
-&lt;c:out value="${escapedValue}" escapeXml="true" /&gt;
+<c:out value="${escapedValue}" escapeXml="true" />
 ```
 
 | Before |   After    |
@@ -80,7 +80,7 @@ StringEscapeUtils.escapeEcmaScript(value)
 
 | Before |  After  |                                  Description                                  |
 |:------:|:-------:|:------------------------------------------------------------------------------|
-| &apos; | \&apos; | escapeEcmaScriptMap.put("'", "\\'");                                          |
+| &apos; | \&apos; | escapeEcmaScriptMap.put("&apos;", "\\&apos;");                                          |
 | &quot; | \&quot; | escapeEcmaScriptMap.put("\"", "\\\"");                                        |
 | \\     | \\\\    | escapeEcmaScriptMap.put("\\", "\\\\");                                        |
 | /      | \\/     | escapeEcmaScriptMap.put("/", "\\/");                                          |

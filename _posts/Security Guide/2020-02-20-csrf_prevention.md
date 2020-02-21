@@ -195,7 +195,3 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 }
 ```
-
-***
-
-# References
