@@ -20,6 +20,8 @@ abstract: ""
 
 CSRF(Cross Site Request Forgery)이란 웹 취약점의 하나로 인터넷 사용자가 자신의 의지와는 무관하게 공격자가 의도한 행위를 요청하게 만드는 공격이다.
 
+***
+
 # Details
 
 사용자의 입력을 받을 때 Form 또는 Ajax를 사용하는 경우 CSRF Token을 추가하여 사용자가 의도하지 않은 요청에 대해 대비해야 한다.
