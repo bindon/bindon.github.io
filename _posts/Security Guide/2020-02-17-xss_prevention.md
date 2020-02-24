@@ -80,7 +80,7 @@ StringEscapeUtils.escapeEcmaScript(value)
 
 | Before |  After  |                                  Description                                  |
 |:------:|:-------:|:------------------------------------------------------------------------------|
-| &apos; | \&apos; | escapeEcmaScriptMap.put("&apos;", "\\&apos;");                                          |
+| &apos; | \&apos; | escapeEcmaScriptMap.put("&apos;", "\\&apos;");                                |
 | &quot; | \&quot; | escapeEcmaScriptMap.put("\"", "\\\"");                                        |
 | \\     | \\\\    | escapeEcmaScriptMap.put("\\", "\\\\");                                        |
 | /      | \\/     | escapeEcmaScriptMap.put("/", "\\/");                                          |
