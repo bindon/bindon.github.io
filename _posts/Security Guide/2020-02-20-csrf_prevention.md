@@ -101,7 +101,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     <div class="form-group">
         <div>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-            <input type="text"   name="value" id="value" value="LINE" />
+            <input type="text"   name="value" id="value" value="bindon" />
             <input type="submit" class="btn btn-primary" id="submit" value="Send using form" />
             <input type="button" class="btn btn-primary" id="button" value="Send using ajax" />
         </div>

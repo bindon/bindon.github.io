@@ -110,7 +110,7 @@ img 태그는 HTML 태그 중 하나로 XSS 공격에 자주 사용되기 때문
 
 아래 예제는 Client에서 escapeXml을 사용했음에도 불구하고 Server에서 Escaping을 수행하지 않아 스크립트가 실행된 것을 나타낸다.
 
-![Image Tag]({{site.url}}{{site.baseurl}}{{site.assets_path}}/img/posts/Security Guide/2020-02-17-xss_prevention/examples_carriage_return.png){:style="display: block; margin: 0 auto"}
+![Carriage Return]({{site.url}}{{site.baseurl}}{{site.assets_path}}/img/posts/Security Guide/2020-02-17-xss_prevention/examples_carriage_return.png){:style="display: block; margin: 0 auto"}
 
 ***
 
