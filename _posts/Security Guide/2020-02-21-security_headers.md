@@ -212,7 +212,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   - Front End
 
 ```html
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -449,6 +448,7 @@ add_header X-XSS-Protection "1; mode=block";
 ```
 
   - Java
+  
 ```java
 package io.github.bindon.controller;
  
@@ -470,6 +470,7 @@ public class IndexController {
 ```
 
   - Spring Security
+
 ```java
 package io.github.bindon.controller;
 
