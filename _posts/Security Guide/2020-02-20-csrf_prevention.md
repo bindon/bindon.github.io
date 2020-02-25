@@ -73,7 +73,7 @@ CSRF(Cross Site Request Forgery)이란 웹 취약점의 하나로 인터넷 사�
 #### HMAC Based Token Pattern
 
 1. 서버에서 가지고 있는 키를 이용하여 토큰을 생성
-  - CSRF Token = HMAC(sessionId + timestamp) || timestamp
+  - CSRF Token = HMAC(sessionId + timestamp) \|\| timestamp
 2. 클라이언트에서는 Hidden Field 또는 HTTP Header에 추가할 수 있으며, From 및 Ajax에 사용될 수 있음
 3. 서버측에서 값을 다시 받아 자신의 키를 이용하여 복호화를 수행하고 검증을 수행
   1. CSRF Token에서 timestamp를 떼어내고 만료 시간을 검증
