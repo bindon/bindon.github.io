@@ -48,12 +48,12 @@ Cookie: JSESSIONID=00112233445566778899AABBCCDDEEFF; mycookie=bindon;
 # Vulnerable Case
 
 1. 사용자는 parameter을 통해 자신의 ID를 서버로 전송
-  - https://example.com/?id=bindon%0d%0a%0d%0a&lt;script&gt;alert(document.domain)&lt;/script&gt;
+    - https://example.com/?id=bindon%0d%0a%0d%0a&lt;script&gt;alert(document.domain)&lt;/script&gt;
 2. 서버에서는 받은 ID를 Header의 X-ID라는 필드에 저장
 3. CR(%0d), LF(%0a)로 인하여 &lt;script&gt;가 Body에 기록되므로 스크립트가 실행됨
 
 * Result
-  - HTTP Response 1
+    - HTTP Response 1
 
 ```html
 POST /rest/request HTTP/1.1

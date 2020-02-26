@@ -28,8 +28,8 @@ Security Header는 필요한 리소스의 사용에 대해서는 권한을 설�
 
 # Set-Cookie
 * 사용자 브라우저에 쿠키를 전송하기 위해 사용되는 HTTP Header(상세 정보 확인)
-  - &lt;cookie-name&gt;=&lt;cookie-value&gt; 형태로 값을 지정함
-  - SameSite의 경우 먼저 Strict를 적용한 후 문제가 있을 시 다른 옵션으로 변경하는 것을 권장
+    - &lt;cookie-name&gt;=&lt;cookie-value&gt; 형태로 값을 지정함
+    - SameSite의 경우 먼저 Strict를 적용한 후 문제가 있을 시 다른 옵션으로 변경하는 것을 권장
 
 | Directives                     | Description                                                                                                                                                                  |
 |:-------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -42,7 +42,7 @@ Security Header는 필요한 리소스의 사용에 대해서는 권한을 설�
 | *SameSite={None, Strint, Lax}* | 허용된 사이트에만 쿠키를 보낼 수 있도록 설정<br />None: 제 3자에게 쿠키 전송 허용<br />Strict: 제 3자에게 쿠키가 전송되지 않음<br />Lax: GET으로 요청하는 일부에 대해서 허용 |
 
 * Examples
-  - Java
+* Java
 
 ```java
 package io.github.bindon.controller;
@@ -69,7 +69,7 @@ public class IndexController {
 }
 ```
 
-  - Result
+* Result
 ![Cache-Control]({{site.url}}{{site.baseurl}}{{site.assets_path}}/img/posts/Security Guide/2020-02-21-security_headers/examples_set-cookie.png){:style="display: block; margin: 0 auto"}
 
 ***
@@ -104,7 +104,7 @@ public class IndexController {
 | 'unsafe-eval'   | eval()과 같은 Javascript 허용    |
 
 * Examples
-  - NGINX
+* NGINX
 
 ```nginx
 add_header Content-Security-Policy "
@@ -114,7 +114,7 @@ add_header Content-Security-Policy "
 ";
 ```
 
-  - Java
+* Java
 
 ```java
 package io.github.bindon.controller;
@@ -154,7 +154,7 @@ public class SecurityHeaderController {
 }
 ```
 
-  - Spring Security
+* Spring Security
 
 ```java
 package io.github.bindon.controller;
@@ -209,7 +209,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 }
 ```
 
-  - Front End
+* Front End
 
 ```html
 <!DOCTYPE html>
@@ -239,7 +239,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 </html>
 ```
 
-  - Result
+* Result
 ![Content Security Policy]({{site.url}}{{site.baseurl}}{{site.assets_path}}/img/posts/Security Guide/2020-02-21-security_headers/examples_csp.png){:style="display: block; margin: 0 auto"}
 ![Content Security Policy Result]({{site.url}}{{site.baseurl}}{{site.assets_path}}/img/posts/Security Guide/2020-02-21-security_headers/examples_csp_result.png){:style="display: block; margin: 0 auto"}
 
@@ -251,8 +251,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 * 캐시 사용 시 동일한 프록시 서버를 이용하는 사용자 간의 세션이 공유 될 수 있음
 * API 서버 또한 인증을 하지 않고 데이터를 받아오는 일이 발생할 수 있기 때문에 적용 필요
 * 지시자 종류
-  - 캐시 요청: max-age, max-stale, min-fresh, no-cache, no-store, no-transform, only-if-cached
-  - 캐시 응답: must-revalidate, no-cache, no-store, no-transform, public, private, proxy-revalidate, max-age, s-maxage
+    - 캐시 요청: max-age, max-stale, min-fresh, no-cache, no-store, no-transform, only-if-cached
+    - 캐시 응답: must-revalidate, no-cache, no-store, no-transform, public, private, proxy-revalidate, max-age, s-maxage
 
 | Cacheability | Description                                                |
 |:-------------|:-----------------------------------------------------------|
@@ -282,7 +282,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 | only-if-cached | 응답이 변경되지 못하도록 설정 |
 
 * Examples
-  - Java
+* Java
 
 ```java
 package io.github.bindon.controller;
@@ -306,7 +306,7 @@ public class IndexController {
 }
 ```
 
-  - Spring Security
+* Spring Security
 
 ```java
 package io.github.bindon.controller;
@@ -344,7 +344,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 }
 ```
 
-  - Result
+* Result
 ![Cache-Control]({{site.url}}{{site.baseurl}}{{site.assets_path}}/img/posts/Security Guide/2020-02-21-security_headers/examples_cache-control.png){:style="display: block; margin: 0 auto"}
 
 ***
@@ -352,7 +352,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 # HSTS(HTTP Strict-Transport-Security)
 
 * HTTP 대신 HTTPS만을 사용하여 통신해야한다고 웹사이트가 브라우저에 알리는 보안 기능([상세 정보 확인](https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Strict-Transport-Security#Preloading_Strict_Transport_Security))
-  - HTTP 요청은 MITM의 위험성이 존재하기 때문에 HTTPS로 변경되어야 한다고 알리는 헤더
+    - HTTP 요청은 MITM의 위험성이 존재하기 때문에 HTTPS로 변경되어야 한다고 알리는 헤더
 
 | Directives          | Description                                                       |
 |:--------------------|:------------------------------------------------------------------|
@@ -361,7 +361,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 | *preload*           | 브라우저 자체에 내장된 HSTS 설정 사용                             |
 
 * Examples
-  - Java
+* Java
 
 ```java
 package io.github.bindon.controller;
@@ -383,7 +383,7 @@ public class IndexController {
 }
 ```
 
-  - Spring Security
+* Spring Security
 
 ```java
 package io.github.bindon.controller;
@@ -420,7 +420,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 }
 ```
 
-  - Result
+* Result
 
 ![HSTS]({{site.url}}{{site.baseurl}}{{site.assets_path}}/img/posts/Security Guide/2020-02-21-security_headers/examples_hsts.png){:style="display: block; margin: 0 auto"}
 
@@ -429,9 +429,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 # X-XSS-Protection
 
 * Reflected XSS와 같은 공격을 탐지
-  - 탐지된다면 옵션에 따라서 해당 부분을 제거한 후 렌더링하거나 렌더링을 하지않고 경고문 출력
-  - 해당 옵션은 데이터를 받아온 후 렌더링 시점에서 발생하는 공격을 막는 옵션이며 Ajax를 통해 조회한 데이터에 대해서는 다룰 수 없음(API 서버는 헤더 설정 필요 없음)
-    * ex) 웹 서버 및 API 서버에 "1; mode=block"을 적용하더라도 Ajax로 조회한 데이터에 XSS가 존재하면 스크립트가 실행 됨
+    - 탐지된다면 옵션에 따라서 해당 부분을 제거한 후 렌더링하거나 렌더링을 하지않고 경고문 출력
+    - 해당 옵션은 데이터를 받아온 후 렌더링 시점에서 발생하는 공격을 막는 옵션이며 Ajax를 통해 조회한 데이터에 대해서는 다룰 수 없음(API 서버는 헤더 설정 필요 없음)
+        * ex) 웹 서버 및 API 서버에 "1; mode=block"을 적용하더라도 Ajax로 조회한 데이터에 XSS가 존재하면 스크립트가 실행 됨
 
 | Directives                                        | Description                                                      |
 |:--------------------------------------------------|:-----------------------------------------------------------------|
@@ -441,14 +441,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 | X-XSS-Protection: 1; report=&lt;reporting-uri&gt;	| XSS 공격 탐지 시 해당 URI로 보고서 전송                          |
 
 * Examples
-  - NGINX
+* NGINX
 
 ```nginx
 add_header X-XSS-Protection "1; mode=block";
 ```
 
-  - Java
-  
+* Java
+
 ```java
 package io.github.bindon.controller;
  
@@ -469,7 +469,7 @@ public class IndexController {
 }
 ```
 
-  - Spring Security
+* Spring Security
 
 ```java
 package io.github.bindon.controller;
@@ -484,7 +484,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-     
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         super.configure(auth);
@@ -503,7 +502,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 }
 ```
 
-  - Result
+* Result
 
 ![X-XSS-Protection]({{site.url}}{{site.baseurl}}{{site.assets_path}}/img/posts/Security Guide/2020-02-21-security_headers/examples_x-xss-protection.png){:style="display: block; margin: 0 auto"}
 
@@ -513,13 +512,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 * Content-Type에 저장된 MIME Type을 검사하여 올바른 형태인 경우에만 허용
 * 요청 차단
-  - &lt;style&gt;태그를 사용할 경우 type="text/css"가 아니면 차단
-  - &lt;script&gt;태그를 사용할 경우 type="text/javascript"가 아니면 차단
+    - &lt;style&gt;태그를 사용할 경우 type="text/css"가 아니면 차단
+    - &lt;script&gt;태그를 사용할 경우 type="text/javascript"가 아니면 차단
 * MIME-type이 일치하지 않을 시 읽기 차단(Cross-Origin Read Blocking)
-  - text/html
-  - text/plain
-  - text/json, application/json, */*+json
-  - text/xml, application/xml, */*+xml(image/svg+xml 제외)
+    - text/html
+    - text/plain
+    - text/json, application/json, */*+json
+    - text/xml, application/xml, */*+xml(image/svg+xml 제외)
 
 | Directives                        | Description                        |
 |:----------------------------------|:-----------------------------------|
@@ -527,17 +526,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 | X-Content-Type-Options: sniff	    | MITMTYPE이 일치하지 않아도 허용    |
 
 * Examples
-  - NGINX
+* NGINX
 
 ```nginx
 add_header X-Content-Type-Options nosniff;
 ```
 
-  - Java
+* Java
 
 ```java
 package io.github.bindon.controller;
- 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
@@ -554,7 +553,7 @@ public class IndexController {
 }
 ```
 
-  - Spring Security
+* Spring Security
 
 ```java
 package io.github.bindon.controller;
@@ -569,7 +568,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
- 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         super.configure(auth);
@@ -585,7 +583,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 }
 ```
 
-  - Result
+* Result
 
 ![X-Content-Type-Options]({{site.url}}{{site.baseurl}}{{site.assets_path}}/img/posts/Security Guide/2020-02-21-security_headers/examples_x-content-type-options.png){:style="display: block; margin: 0 auto"}
 
@@ -608,7 +606,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 | unsafe-url                      | 모든 요청에 대해서 referer 허용                                |
 
 * Examples
-  - Java
+* Java
 
 ```java
 package io.github.bindon.controller;
@@ -630,7 +628,7 @@ public class IndexController {
 }
 ```
 
-  - Spring Security
+* Spring Security
 
 ```java
 package io.github.bindon.controller;
@@ -664,7 +662,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 }
 ```
 
-  - Result
+* Result
 
 ![Referrer-Policy]({{site.url}}{{site.baseurl}}{{site.assets_path}}/img/posts/Security Guide/2020-02-21-security_headers/examples_referrer-policy.png){:style="display: block; margin: 0 auto"}
 
@@ -681,13 +679,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 | X-Frame-Options: allow-from https://bindon.com | https://bindon.com 도메인에서만 렌더링 가능                      |
 
 * Examples
-  - NGINX
+* NGINX
 
 ```nginx
 add_header X-Frame-Options deny;
 ```
 
-  - Java
+* Java
 
 ```java
 package io.github.bindon.controller;
@@ -709,7 +707,7 @@ public class IndexController {
 }
 ```
 
-  - Spring Security
+* Spring Security
 
 ```java
 package io.github.bindon.controller;
@@ -724,7 +722,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
- 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         super.configure(auth);
@@ -742,7 +739,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 }
 ```
 
-  - Result
+* Result
 
 ![X-Frame-Options]({{site.url}}{{site.baseurl}}{{site.assets_path}}/img/posts/Security Guide/2020-02-21-security_headers/examples_x-frame-options.png){:style="display: block; margin: 0 auto"}
 
@@ -795,7 +792,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 | Access-Control-Allow-Credentials: true | false일 경우 해당 요청 실패 |
 
 * Examples
-  - Ajax
+* Ajax
 
 ```javascript
 $.ajax({
@@ -807,7 +804,7 @@ $.ajax({
 });
 ```
 
-  - XHR
+* XHR
 
 ```javascript
 var xhr = new XMLHttpRequest();
@@ -816,7 +813,7 @@ xhr.withCredentials = true;
 xhr.send(null);
 ```
 
-  - Fetch
+* Fetch
 
 ```javascript
 fetch(url, {
@@ -867,7 +864,7 @@ fetch(url, {
 | xr-spatial-tracking             | WebXR Device API를 사용하여 WebXR 세션과 상호 작용할 것인지 설정                      |
 
 * Examples
-  - Java
+* Java
 
 ```java
 package io.github.bindon.controller;
@@ -889,7 +886,7 @@ public class IndexController {
 }
 ```
 
-  - Spring Security
+* Spring Security
 
 ```java
 package io.github.bindon.controller;
@@ -904,7 +901,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-     
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         super.configure(auth);
@@ -925,6 +921,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 }
 ```
 
-  - Result
+* Result
 
 ![Feature-Policy]({{site.url}}{{site.baseurl}}{{site.assets_path}}/img/posts/Security Guide/2020-02-21-security_headers/examples_feature-policy.png){:style="display: block; margin: 0 auto"}

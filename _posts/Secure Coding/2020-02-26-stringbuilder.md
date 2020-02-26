@@ -46,10 +46,10 @@ StringBuilder를 사용할 때 대부분의 개발자는 new StringBuilder()를 
 StringBuilder의 append() 메소드를 사용하면 아래와 같이 상황에 따라 다르게 동작한다.
 
 1. String을 append할 capacity가 있을 때
-  1. 매개변수로 입력받은 String을 빈 공간에 할당
+    1. 매개변수로 입력받은 String을 빈 공간에 할당
 2. String을 append할 capacity가 없을 때(DoS 위험 존재)
-  1. max(2*capacity, 기존크기+입력받은 크기)로 char[] 배열을 다시 생성
-  2. 생성된 새로운 배열에 값을 할당
+    1. max(2*capacity, 기존크기+입력받은 크기)로 char[] 배열을 다시 생성
+    2. 생성된 새로운 배열에 값을 할당
 
 ***
 
