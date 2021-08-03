@@ -19,3 +19,5 @@ statement: "bindon (Designed by DeerRIDER). All rights reserved."
 toc_level: 6
 # texts randomly displayed in background
 bgtext: "αβγδεζηθικλμνξοπρστυφχψω∷∫∮∝∞∧∨∑∏∪∩∈∵∴⊥‖∠⌒⊙≌√"
+
+theme: jekyll-theme-hacker
